@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CognitifExamCRUD.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Products List</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Add New Product</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th class="col-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th class="col-8">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th class="col-1">
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th class="col-1">
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td class="col-2">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td class="col-8">
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td class="col-1">
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td class="col-1">
+                <a class="bi bi-pencil-square" asp-action="Edit" asp-route-id="@item.ProductId"></a> |
+                <a class="bi bi-trash" asp-action="Delete" asp-route-id="@item.ProductId"></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
